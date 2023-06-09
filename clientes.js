@@ -49,9 +49,27 @@ async function procesarClientes(clientes, fechaini, fechafin) {
   }
 }
 
-// Constantes para fechaini y fechafin (reemplaza los valores por los tuyos)
-const fechaini = "02/01/2023";
-const fechafin = "02/01/2023";
+// Constantes para fechaini y fechafin
+
+// Obtener la fecha actual
+const fechaActual = new Date();
+
+// Obtener el primer día del mes anterior
+const primerDiaMesAnterior = new Date(fechaActual.getFullYear(), fechaActual.getMonth() - 1, 1);
+const primerDiaAnterior = primerDiaMesAnterior.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' });
+
+// Obtener el día actual
+const diaActual = fechaActual.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' });
+
+// Utilizar las variables según sea necesario
+console.log('Fecha de inicio:', primerDiaAnterior);
+console.log('Fecha de fin:', diaActual);
+
+
+
+
+const fechaini = primerDiaAnterior;
+const fechafin = diaActual;
 
 // Consultar los clientes activos de cada usuario y procesarlos en secuencia
 usersCollection.get()

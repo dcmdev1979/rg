@@ -6,6 +6,30 @@ import cors from "cors";
 
 app.use(cors());
 
+//TAREAS PROGRAMADAS CON CRON
+
+import cron from 'node-cron';
+import { exec } from 'child_process';
+
+// Configura la tarea programada para ejecutar a las 1 am todos los días
+cron.schedule('0 1 * * *', () => {
+  // Ejecuta el archivo clientes.js
+  exec('node clientes.js', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.error(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+});
+
+
+
+
 //EXCEL JS
 
 import excelJS from "exceljs";
