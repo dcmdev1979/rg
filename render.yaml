@@ -1,0 +1,5 @@
+services:
+  - name: web
+    buildCommand: npm install
+    startCommand: npm start
+    nodeVersion: 18.5
