@@ -14,7 +14,7 @@ import cron from 'node-cron';
 import { exec } from 'child_process';
 
 // Configura la tarea programada para ejecutar a las 1 am todos los días
-cron.schedule('15 18  * * *', () => {
+cron.schedule('25 18  * * *', () => {
   // Ejecuta el archivo clientes.js
   console.log('Tarea programada ejecutándose...');
   exec('node clientes.js', (error, stdout, stderr) => {
